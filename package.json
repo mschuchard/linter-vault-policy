@@ -1,0 +1,51 @@
+{
+  "name": "linter-vault-policy",
+  "main": "./lib/main.js",
+  "version": "1.0.0",
+  "description": "Vault policy lint and format via fmt",
+  "repository": "https://github.com/mschuchard/linter-vault-policy",
+  "license": "MIT",
+  "keywords": [
+    "lint",
+    "linter",
+    "vault"
+  ],
+  "scripts": {
+    "test": "atom --test spec"
+  },
+  "bugs": {
+    "url": "https://github.com/mschuchard/linter-vault-policy/issues"
+  },
+  "engines": {
+    "atom": ">0.95.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "atom-linter": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "babel-eslint": "latest"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "atom": true
+    }
+  }
+}
