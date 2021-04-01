@@ -1,0 +1,26 @@
+version: 2
+
+jobs:
+  test:
+    working_directory: /tmp/project
+    docker:
+    - image: jamesnetherton/docker-atom-editor
+    steps:
+    - checkout
+    - run:
+        name: install npm dependencies
+        command: npm install
+    - run:
+        name: install apm dependencies
+        command: apm install language-hcl && apm install atom-linter
+    - run:
+        name: install vault cli
+        command: wget https://releases.hashicorp.com/vault/1.6.3/vault_1.6.3_linux_amd64.zip && unzip terraform_1.6.3_linux_amd64.zip -d /usr/bin/
+    - run:
+        name: execute unit tests
+        command: atom --test spec
+
+workflow:
+  test:
+    jobs:
+    - test
