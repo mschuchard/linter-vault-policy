@@ -26,7 +26,7 @@ matrix:
 
 # execute tests
 install:
-  - https://releases.hashicorp.com/vault/1.3.4/vault_1.3.4_linux_amd64.zip
-  - sudo unzip vault_1.3.4_linux_amd64.zip -d /usr/bin/
+  - sudo wget https://releases.hashicorp.com/vault/1.6.3/vault_1.6.3_linux_amd64.zip
+  - sudo unzip vault_1.6.3_linux_amd64.zip -d /usr/bin/
 before_script: vault version
 script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'

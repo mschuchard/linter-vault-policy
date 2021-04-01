@@ -7,9 +7,17 @@ jobs:
     - image: jamesnetherton/docker-atom-editor
     steps:
     - checkout
+    - restore_cache:
+        keys:
+        - linter-vault-policy
     - run:
         name: install npm dependencies
-        command: npm install
+        command: npm instal
+    - save_cache:
+        paths:
+        - node_modules
+        - ~/.atom/packages
+        key: linter-vault-policy
     - run:
         name: install apm dependencies
         command: apm install language-hcl && apm install atom-linter
@@ -20,7 +28,7 @@ jobs:
         name: execute unit tests
         command: atom --test spec
 
-workflow:
-  test:
+workflows:
+  execute_tests:
     jobs:
     - test
