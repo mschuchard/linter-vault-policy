@@ -4,3 +4,4 @@ spec
 linter_vault_policy.png
 .git
 .travis.yml
+.circleci
