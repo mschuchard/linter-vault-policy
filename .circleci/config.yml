@@ -3,31 +3,38 @@ version: 2.1
 
 jobs:
   test:
+    environment:
+      VERSION: '1.7.4'
+      DISPLAY: ':99'
+      ATOM_LINT_WITH_BUNDLED_NODE: true
+      APM_TEST_PACKAGES: 'language-hcl'
     working_directory: /tmp/project
     docker:
-    - image: jamesnetherton/docker-atom-editor
+    - image: circleci/node:latest
     steps:
     - checkout
     - restore_cache:
         keys:
         - linter-vault-policy
     - run:
-        name: install npm dependencies
-        command: npm instal
+        name: install some pre-requisite packages
+        command: sudo apt-get update && sudo apt-get -yq install curl xvfb
+    - run:
+        name: install vault cli
+        command: wget https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd64.zip && unzip vault_${VERSION}_linux_amd64.zip -d /usr/bin/
+    - run:
+        name: start display server for Atom
+        command: /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16 +extension RANDR
+        background: true
+    - run:
+        name: run package tests
+        command: curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh
     - save_cache:
         paths:
         - node_modules
         - ~/.atom/packages
+        # ideally also apt when that is supported
         key: linter-vault-policy
-    - run:
-        name: install apm dependencies
-        command: apm install language-hcl && apm install atom-linter
-    - run:
-        name: install vault cli
-        command: wget https://releases.hashicorp.com/vault/1.6.3/vault_1.6.3_linux_amd64.zip && unzip terraform_1.6.3_linux_amd64.zip -d /usr/bin/
-    - run:
-        name: execute unit tests
-        command: atom --test spec
 
 workflows:
   execute_tests:
