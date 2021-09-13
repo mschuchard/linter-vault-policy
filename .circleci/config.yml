@@ -21,7 +21,7 @@ jobs:
         command: sudo apt-get update && sudo apt-get -yq install curl xvfb
     - run:
         name: install vault cli
-        command: wget https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd64.zip && unzip vault_${VERSION}_linux_amd64.zip -d /usr/bin/
+        command: wget https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd64.zip && sudo unzip vault_${VERSION}_linux_amd64.zip -d /usr/bin/
     - run:
         name: start display server for Atom
         command: /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16 +extension RANDR
