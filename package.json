@@ -1,7 +1,7 @@
 {
   "name": "linter-vault-policy",
   "main": "./lib/main.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vault policy lint and format via fmt",
   "repository": "https://github.com/mschuchard/linter-vault-policy",
   "license": "MIT",

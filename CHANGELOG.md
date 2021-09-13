@@ -1,4 +1,4 @@
-### 1.0.1 (Next)
+### 1.0.1
 - Updates to Linter API usage.
 - Fix linter return on stdin error.
 - Remove color from stdout output.
