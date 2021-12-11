@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   test:
     environment:
-      VERSION: '1.7.4'
+      VERSION: '1.8.6'
       DISPLAY: ':99'
       ATOM_LINT_WITH_BUNDLED_NODE: true
       APM_TEST_PACKAGES: 'language-hcl'

@@ -2,6 +2,7 @@
 
 ### Linter-Vault-Policy
 [![Build Status](https://travis-ci.com/mschuchard/linter-vault-policy.svg?branch=master)](https://travis-ci.com/mschuchard/linter-vault-policy)
+[![CircleCI](https://circleci.com/gh/mschuchard/linter-vault-policy.svg?style=svg)](https://circleci.com/gh/mschuchard/linter-vault-policy)
 
 Linter-Vault-Policy aims to provide functional and robust `vault fmt` linting and formatting functionality within Atom.
 
