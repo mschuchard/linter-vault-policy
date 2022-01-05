@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   test:
     environment:
-      VERSION: '1.8.6'
+      VERSION: '1.8.7'
       DISPLAY: ':99'
       ATOM_LINT_WITH_BUNDLED_NODE: true
       APM_TEST_PACKAGES: 'language-hcl'
@@ -18,7 +18,7 @@ jobs:
         - linter-vault-policy
     - run:
         name: install some pre-requisite packages
-        command: sudo apt-get update && sudo apt-get -yq install curl xvfb
+        command: sudo apt-get update && sudo apt-get -yq install curl xvfb libgbm
     - run:
         name: install vault cli
         command: wget https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd64.zip && sudo unzip vault_${VERSION}_linux_amd64.zip -d /usr/bin/
