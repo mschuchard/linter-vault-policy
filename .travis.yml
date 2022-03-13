@@ -26,4 +26,4 @@ install:
   - sudo wget "https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd64.zip"
   - sudo unzip "vault_${VERSION}_linux_amd64.zip" -d /usr/bin/
 before_script: vault version
-script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
+script: 'curl -s https://raw.githubusercontent.com/mschuchard/vagrant-boxes-docker-images/master/atom-build-package.sh | sh'
