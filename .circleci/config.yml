@@ -6,7 +6,6 @@ jobs:
     environment:
       VERSION: '1.8.7'
       DISPLAY: ':99'
-      ATOM_LINT_WITH_BUNDLED_NODE: true
       APM_TEST_PACKAGES: 'language-hcl'
     working_directory: /tmp/project
     docker:
@@ -28,7 +27,7 @@ jobs:
         background: true
     - run:
         name: run package tests
-        command: curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh
+        command: curl -s https://raw.githubusercontent.com/mschuchard/vagrant-boxes-docker-images/master/atom-build-package.sh | sh
     - save_cache:
         paths:
         - node_modules
