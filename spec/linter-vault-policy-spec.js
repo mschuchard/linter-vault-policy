@@ -64,7 +64,7 @@ describe('The Vault provider for Linter', () => {
   it('checks a valid non-vault policy hcl file and does nothing', (done) => {
     const goodFile = path.join(__dirname, 'fixtures/', 'not_vault.hcl');
     return atom.workspace.open(goodFile).then(editor =>
-      lint(editor).then(=> {
+      lint(editor).then(messages => {
       }, () => {
         done();
       })
